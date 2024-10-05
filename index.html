@@ -9,8 +9,68 @@
 </head>
 <body>
     <div id="tooltip"></div>
+
+    <button class="menu-button" id="menuButton">
+        <span class="menu-icon">&#9776;</span>
+    </button>
+
+    <div class="drawer" id="drawer">
+        <h2>MENU</h2>
+        <br>
+        <ul>
+            <hr>
+            <li onclick="window.location.href='galaxy/galaxy.html'">Galaxy</li>
+            <li onclick="window.location.href='sun/sun.html'">Sun</li>
+            <li onclick="window.location.href='moon/moon.html'">Moon</li>
+            <li id="planetsItem">
+                <div class="parent">Planets <span>&#9660;</span></div>
+                <ul>
+                    <hr>
+                    <li onclick="window.location.href='mercury/mercury.html'">Mercury</li>
+                    <li onclick="window.location.href='venus/venus.html'">Venus</li>
+                    <li onclick="window.location.href='earth/earth.html'">Earth</li>
+                    <li onclick="window.location.href='mars/mars.html'">Mars</li>
+                    <li onclick="window.location.href='jupiter/jupiter.html'">Jupiter</li>
+                    <li onclick="window.location.href='saturn/saturn.html'">Saturn</li>
+                    <li onclick="window.location.href='uranus/uranus.html'">Uranus</li>
+                    <li onclick="window.location.href='neptune/neptune.html'">Neptune</li>
+                </ul>
+            </li>
+            <li id="dwarfPlanetsItem">
+                <div class="parent"> Dwarf Planets <span>&#9660;</span></div>
+                <ul>
+                    <hr>
+                    <li onclick="window.location.href='pluto/pluto.html'">Pluto</li>
+                    <li onclick="window.location.href='ceres/ceres.html'">Ceres</li>
+                    <li onclick="window.location.href='haumea/haumea.html'">Haumea</li>
+                    <li onclick="window.location.href='makemake/makemake.html'">Makemake</li>
+                    <li onclick="window.location.href='eris/eris.html'">Eris</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
     <script src="script.js"></script>
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const drawer = document.getElementById('drawer');
+        const planetsItem = document.getElementById('planetsItem');
+        const dwarfPlanetsItem = document.getElementById('dwarfPlanetsItem');
+
+        menuButton.addEventListener('click', () => {
+            drawer.classList.toggle('open');
+        });
+
+        planetsItem.addEventListener('click', (event) => {
+            event.stopPropagation();
+            planetsItem.classList.toggle('active');
+        });
+
+        dwarfPlanetsItem.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dwarfPlanetsItem.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

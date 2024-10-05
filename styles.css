@@ -16,3 +16,93 @@ canvas {
     pointer-events: none;
     font-family: Arial, sans-serif;
 }
+
+.menu-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    left: -300px; 
+    width: 250px;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.95);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s ease;
+    padding: 20px;
+    z-index: 9;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-y: auto;
+}
+
+.drawer.open {
+    left: 0;
+}
+
+.menu-icon {
+    font-size: 24px;
+}
+
+.drawer h2 {
+    margin: 0 0 20px 0;
+    font-size: 24px;
+    color: #f0f0f0;
+    text-align: center;
+}
+
+.drawer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.drawer ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+    transition: background-color 0.3s ease;
+}
+
+.drawer ul li:hover {
+    background-color: #555;
+}
+
+.drawer ul li ul {
+    display: none;
+    padding-left: 20px;
+    margin-top: 0;
+}
+
+.drawer ul li.active ul {
+    display: block;
+}
+
+.parent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.parent span {
+    margin-left: 10px;
+}
