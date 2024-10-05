@@ -145,7 +145,7 @@ camera.lookAt(0, 0, 0);
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
-const planets = [mercury, venus, earth, mars, ceres, jupiter, saturn, uranus, neptune, pluto, haumea, makemake, eris];
+const celestialBodies = [sun, mercury.planet, venus.planet, earth.planet, moon.planet, mars.planet, ceres.planet, jupiter.planet, saturn.planet, uranus.planet, neptune.planet, pluto.planet, haumea.planet, makemake.planet, eris.planet];
 
 window.addEventListener('mousemove', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -153,14 +153,14 @@ window.addEventListener('mousemove', (event) => {
 
     raycaster.setFromCamera(mouse, camera);
 
-    const intersects = raycaster.intersectObjects(orbits);
+    const intersects = raycaster.intersectObjects(celestialBodies);
 
     if (intersects.length > 0) {
-        const hoveredOrbit = intersects[0].object;
+        const hoveredBody = intersects[0].object;
         tooltip.style.display = 'block';
         tooltip.style.left = event.clientX + 10 + 'px';
         tooltip.style.top = event.clientY + 10 + 'px';
-        tooltip.innerHTML = hoveredOrbit.userData.name || 'Unknown Orbit';
+        tooltip.innerHTML = hoveredBody.userData.name || 'Unknown Body';
 
         document.body.style.cursor = 'pointer';
     } else {
@@ -243,6 +243,7 @@ function animate() {
 
 animate();
 
+sun.userData = { name: 'Sun' };
 mercury.planet.userData = { name: 'Mercury' };
 venus.planet.userData = { name: 'Venus' };
 earth.planet.userData = { name: 'Earth' };
@@ -262,12 +263,4 @@ window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-window.addEventListener('mouseout', () => {
-    tooltip.style.display = 'none';
-});
-
-window.addEventListener('mouseleave', () => {
-    document.body.style.cursor = 'default';
 });
