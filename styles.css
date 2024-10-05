@@ -1,0 +1,18 @@
+body { 
+    margin: 0; 
+    overflow: hidden; 
+}
+
+canvas { 
+    display: block; 
+}
+
+#tooltip {
+    position: absolute;
+    padding: 5px;
+    color: white;
+    border-radius: 5px;
+    display: none;
+    pointer-events: none;
+    font-family: Arial, sans-serif;
+}
