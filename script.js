@@ -169,38 +169,73 @@ window.addEventListener('mousemove', (event) => {
     }
 });
 
+const toggleOrbitsButton = document.getElementById('toggleOrbitsButton');
+const toggleOrbitsIcon = document.getElementById('toggleOrbitsIcon');
+
+const hideOrbitsIconPath = 'icons/remove.svg';
+const showOrbitsIconPath = 'icons/show.svg';
+
+let orbitsVisible = true;
+
+toggleOrbitsButton.addEventListener('click', () => {
+    orbitsVisible = !orbitsVisible;
+
+    orbits.forEach(orbit => {
+        orbit.visible = orbitsVisible;
+    });
+
+    toggleOrbitsIcon.src = orbitsVisible ? hideOrbitsIconPath : showOrbitsIconPath;
+    toggleOrbitsButton.title = orbitsVisible ? 'Remove Orbits' : 'Show Orbits';
+});
+
+let isPaused = false;
+
+const pausePlayButton = document.getElementById('pausePlayButton');
+const playPauseIcon = document.getElementById('playPauseIcon');
+
+const pauseIconPath = 'icons/pause.svg';
+const playIconPath = 'icons/play.svg';
+
+pausePlayButton.addEventListener('click', () => {
+    isPaused = !isPaused;
+    playPauseIcon.src = isPaused ? playIconPath : pauseIconPath;
+    playPauseIcon.title = isPaused ? 'Play Animation' : 'Pause Animation';
+});
+
 function animate() {
     requestAnimationFrame(animate);
 
-    mercury.orbit.rotation.y += 0.02;
-    venus.orbit.rotation.y += 0.018;
-    earth.orbit.rotation.y += 0.015;
-    mars.orbit.rotation.y += 0.012;
-    ceres.orbit.rotation.y += 0.011;
-    jupiter.orbit.rotation.y += 0.01;
-    saturn.orbit.rotation.y += 0.009;
-    uranus.orbit.rotation.y += 0.008;
-    neptune.orbit.rotation.y += 0.007;
-    pluto.orbit.rotation.y += 0.005;
-    haumea.orbit.rotation.y += 0.004;
-    makemake.orbit.rotation.y += 0.003;
-    eris.orbit.rotation.y += 0.002;
+    if (!isPaused) {
+        mercury.orbit.rotation.y += 0.02;
+        venus.orbit.rotation.y += 0.018;
+        earth.orbit.rotation.y += 0.015;
+        mars.orbit.rotation.y += 0.012;
+        ceres.orbit.rotation.y += 0.011;
+        jupiter.orbit.rotation.y += 0.01;
+        saturn.orbit.rotation.y += 0.009;
+        uranus.orbit.rotation.y += 0.008;
+        neptune.orbit.rotation.y += 0.007;
+        pluto.orbit.rotation.y += 0.005;
+        haumea.orbit.rotation.y += 0.004;
+        makemake.orbit.rotation.y += 0.003;
+        eris.orbit.rotation.y += 0.002;
 
-    mercury.planet.rotation.y += 0.03;
-    venus.planet.rotation.y += 0.03;
-    earth.planet.rotation.y += 0.03;
-    moon.planet.rotation.y += 0.03;
-    mars.planet.rotation.y += 0.03;
-    ceres.planet.rotation.y += 0.03;
-    jupiter.planet.rotation.y += 0.03;
-    saturn.planet.rotation.y += 0.03;
-    saturnRing.rotation.y += 0.03;
-    uranus.planet.rotation.y += 0.03;
-    neptune.planet.rotation.y += 0.03;
-    pluto.planet.rotation.y += 0.03;
-    haumea.planet.rotation.y += 0.03;
-    makemake.planet.rotation.y += 0.03;
-    eris.planet.rotation.y += 0.03;
+        mercury.planet.rotation.y += 0.03;
+        venus.planet.rotation.y += 0.03;
+        earth.planet.rotation.y += 0.03;
+        moon.planet.rotation.y += 0.03;
+        mars.planet.rotation.y += 0.03;
+        ceres.planet.rotation.y += 0.03;
+        jupiter.planet.rotation.y += 0.03;
+        saturn.planet.rotation.y += 0.03;
+        saturnRing.rotation.y += 0.03;
+        uranus.planet.rotation.y += 0.03;
+        neptune.planet.rotation.y += 0.03;
+        pluto.planet.rotation.y += 0.03;
+        haumea.planet.rotation.y += 0.03;
+        makemake.planet.rotation.y += 0.03;
+        eris.planet.rotation.y += 0.03;
+    }
 
     controls.update();
     renderer.render(scene, camera);

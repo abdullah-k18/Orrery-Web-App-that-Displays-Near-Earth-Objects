@@ -106,3 +106,37 @@ canvas {
 .parent span {
     margin-left: 10px;
 }
+
+.pause-play-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.pause-play-button img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.toggle-orbits-button {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.toggle-orbits-button img {
+    display: block;
+    width: 32px;
+    height: 32px;
+}
