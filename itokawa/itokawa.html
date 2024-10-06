@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
+    <title>Itokawa</title>
+</head>
+<body>
+    <button class="back-button" onclick="goHome()">
+        &#8592;
+    </button>
+
+    <div class="info-box" id="infoBox">
+        <h3 id="itokawaTitle">Itokawa</h3>
+        <p id="itokawaInfo">
+            Itokawa is a near-Earth asteroid named after the Japanese engineer Hideo Itokawa. It measures about 0.33 kilometers (0.20 miles) in length and is classified as an S-type asteroid. Itokawa is significant for being the first asteroid visited by a spacecraft, the Hayabusa mission, which collected samples from its surface and returned them to Earth in 2010. The asteroid's irregular shape and surface features provide valuable insights into the composition and history of asteroids in the solar system.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function goHome() {
+            window.location.href = '../index.html';
+        }
+
+        function switchLanguage(language) {
+            const itokawaTitle = document.getElementById('itokawaTitle');
+            const itokawaInfo = document.getElementById('itokawaInfo');
+
+            if (language === 'english') {
+                itokawaTitle.textContent = 'Itokawa';
+                itokawaInfo.innerHTML = `
+                    Itokawa is a near-Earth asteroid named after the Japanese engineer Hideo Itokawa. It measures about 0.33 kilometers (0.20 miles) in length and is classified as an S-type asteroid. Itokawa is significant for being the first asteroid visited by a spacecraft, the Hayabusa mission, which collected samples from its surface and returned them to Earth in 2010. The asteroid's irregular shape and surface features provide valuable insights into the composition and history of asteroids in the solar system.
+                `;
+            } else if (language === 'urdu') {
+                itokawaTitle.textContent = 'ایتوکاوا';
+                itokawaInfo.innerHTML = `
+                    ایٹوکاوا ایک زمین کے قریب کا سیارچہ ہے جس کا نام جاپانی انجینئر ہیڈیو ایٹوکاوا کے نام پر رکھا گیا ہے۔ اس کی لمبائی تقریباً 0.33 کلومیٹر (0.20 میل) ہے اور اسے S قسم کے سیارچے کے طور پر درجہ بند کیا گیا ہے۔ ایٹوکاوا اس لیے اہم ہے کیونکہ یہ پہلا سیارچہ ہے جس کا دورہ ایک خلا کی کشتی، ہیابوسا مشن نے کیا، جس نے اس کی سطح سے نمونے جمع کیے اور 2010 میں انہیں زمین پر واپس لایا۔ اس سیارچے کی بے قاعدہ شکل اور سطح کی خصوصیات ہمارے نظام شمسی میں سیارچوں کی ترکیب اور تاریخ کے بارے میں قیمتی معلومات فراہم کرتی ہیں۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
+    </script>
+</body>
+</html>

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Makemake</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="makemakeTitle">Makemake</h3>
+        <p id="makemakeInfo">
+            Makemake is a dwarf planet located in the Kuiper Belt, discovered in 2005. It is known for its reddish color and is one of the brightest objects in the Kuiper Belt. Makemake has a diameter of about 1,430 kilometers (890 miles) and has no known moons. It is classified as a dwarf planet due to its size and shape, and it orbits the Sun every 305 years.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const makemakeTitle = document.getElementById('makemakeTitle');
+            const makemakeInfo = document.getElementById('makemakeInfo');
+
+            if (language === 'english') {
+                makemakeTitle.textContent = 'Makemake';
+                makemakeInfo.innerHTML = `
+                    Makemake is a dwarf planet located in the Kuiper Belt, discovered in 2005. It is known for its reddish color and is one of the brightest objects in the Kuiper Belt. Makemake has a diameter of about 1,430 kilometers (890 miles) and has no known moons. It is classified as a dwarf planet due to its size and shape, and it orbits the Sun every 305 years.
+                `;
+            } else if (language === 'urdu') {
+                makemakeTitle.textContent = 'میکمیک';
+                makemakeInfo.innerHTML = `
+                    میکمیک ایک بونا سیارہ ہے جو کوپر بیلٹ میں واقع ہے، جس کی دریافت 2005 میں ہوئی۔ یہ اپنی سرخی مائل رنگ کے لیے جانا جاتا ہے اور یہ کوپر بیلٹ میں سب سے روشن اشیاء میں سے ایک ہے۔ میکمیک کا قطر تقریباً 1,430 کلومیٹر (890 میل) ہے اور اس کے پاس کوئی معروف چاند نہیں ہے۔ اسے اس کے حجم اور شکل کی وجہ سے ایک بونا سیارہ کے طور پر درجہ بند کیا گیا ہے، اور یہ سورج کے گرد ہر 305 سال میں گردش کرتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

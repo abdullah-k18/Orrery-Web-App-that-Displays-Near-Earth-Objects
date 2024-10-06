@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Mars</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="marsTitle">Mars</h3>
+        <p id="marsInfo">
+            Mars is the fourth planet from the Sun and is often referred to as the "Red Planet" due to its reddish appearance caused by iron oxide on its surface. It has a diameter of about 6,779 kilometers (4,212 miles) and features the largest volcano in the solar system, Olympus Mons. Mars has two small moons, Phobos and Deimos, and it takes approximately 687 Earth days to complete one orbit around the Sun.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const marsTitle = document.getElementById('marsTitle');
+            const marsInfo = document.getElementById('marsInfo');
+
+            if (language === 'english') {
+                marsTitle.textContent = 'Mars';
+                marsInfo.innerHTML = `
+                    Mars is the fourth planet from the Sun and is often referred to as the "Red Planet" due to its reddish appearance caused by iron oxide on its surface. It has a diameter of about 6,779 kilometers (4,212 miles) and features the largest volcano in the solar system, Olympus Mons. Mars has two small moons, Phobos and Deimos, and it takes approximately 687 Earth days to complete one orbit around the Sun.
+                `;
+            } else if (language === 'urdu') {
+                marsTitle.textContent = 'مریخ';
+                marsInfo.innerHTML = `
+                    مریخ سورج سے چوتھا سیارہ ہے اور اکثر "سرخ سیارہ" کے نام سے جانا جاتا ہے کیونکہ اس کی سرخی مائل شکل سطح پر آئرن آکسائیڈ کی وجہ سے ہے۔ اس کا قطر تقریباً 6,779 کلومیٹر (4,212 میل) ہے اور اس میں سورج کے نظام میں سب سے بڑا آتش فشاں، المپس مونس موجود ہے۔ مریخ کے پاس دو چھوٹے چاند ہیں، فوبوس اور ڈیموس، اور یہ سورج کے گرد ایک مکمل گردش کرنے میں تقریباً 687 زمین کے دن لیتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Saturn</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="saturnTitle">Saturn</h3>
+        <p id="saturnInfo">
+            Saturn is the sixth planet from the Sun and is known for its extensive ring system. It is the second-largest planet in the Solar System, with a diameter of about 120,536 kilometers (74,898 miles). Saturn is a gas giant composed mainly of hydrogen and helium, and it has numerous moons, including Titan, the second-largest moon in the Solar System. Saturn takes approximately 29.5 Earth years to complete one orbit around the Sun.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const saturnTitle = document.getElementById('saturnTitle');
+            const saturnInfo = document.getElementById('saturnInfo');
+
+            if (language === 'english') {
+                saturnTitle.textContent = 'Saturn';
+                saturnInfo.innerHTML = `
+                    Saturn is the sixth planet from the Sun and is known for its extensive ring system. It is the second-largest planet in the Solar System, with a diameter of about 120,536 kilometers (74,898 miles). Saturn is a gas giant composed mainly of hydrogen and helium, and it has numerous moons, including Titan, the second-largest moon in the Solar System. Saturn takes approximately 29.5 Earth years to complete one orbit around the Sun.
+                `;
+            } else if (language === 'urdu') {
+                saturnTitle.textContent = 'زحل';
+                saturnInfo.innerHTML = `
+                    زحل سورج سے چھٹا سیارہ ہے اور اس کے وسیع حلقے کے نظام کے لیے جانا جاتا ہے۔ یہ سورج کے نظام کا دوسرا سب سے بڑا سیارہ ہے، جس کا قطر تقریباً 120,536 کلومیٹر (74,898 میل) ہے۔ زحل ایک گیس دیو ہے جو بنیادی طور پر ہائیڈروجن اور ہیلیم پر مشتمل ہے، اور اس کے پاس کئی چاند ہیں، جن میں ٹائٹن بھی شامل ہے، جو سورج کے نظام کا دوسرا سب سے بڑا چاند ہے۔ زحل سورج کے گرد مکمل گردش کرنے میں تقریباً 29.5 زمین کے سال لیتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Earth</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="earthTitle">Earth</h3>
+        <p id="earthInfo">
+            Earth is the third planet from the Sun and is the only astronomical object known to harbor life. It has a diameter of about 12,742 km (7,918 miles) and takes approximately 365.25 days to orbit the Sun. Earth has a diverse environment with land, water, and atmosphere, supporting a wide variety of ecosystems. It has one natural satellite, the Moon, which influences tides and stabilizes the planet's tilt.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const earthTitle = document.getElementById('earthTitle');
+            const earthInfo = document.getElementById('earthInfo');
+
+            if (language === 'english') {
+                earthTitle.textContent = 'Earth';
+                earthInfo.innerHTML = `
+                    Earth is the third planet from the Sun and is the only astronomical object known to harbor life. It has a diameter of about 12,742 km (7,918 miles) and takes approximately 365.25 days to orbit the Sun. Earth has a diverse environment with land, water, and atmosphere, supporting a wide variety of ecosystems. It has one natural satellite, the Moon, which influences tides and stabilizes the planet's tilt.
+                `;
+            } else if (language === 'urdu') {
+                earthTitle.textContent = 'زمین';
+                earthInfo.innerHTML = `
+                    زمین سورج سے تیسرا سیارہ ہے اور یہ واحد فلکیاتی جسم ہے جس پر زندگی کی موجودگی معلوم ہے۔ اس کا قطر تقریباً 12,742 کلومیٹر (7,918 میل) ہے اور یہ سورج کے گرد تقریباً 365.25 دن میں گردش کرتی ہے۔ زمین میں مختلف ماحولیاتی نظام ہیں جن میں زمین، پانی، اور ہوا شامل ہیں، جو مختلف قسم کی ایکو سسٹمز کی حمایت کرتے ہیں۔ اس کے ایک قدرتی قمر، چاند، ہے جو طغیانیوں پر اثر انداز ہوتا ہے اور سیارے کے جھکاؤ کو مستحکم رکھتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

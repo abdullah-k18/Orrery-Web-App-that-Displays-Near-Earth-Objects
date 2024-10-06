@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Eris</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="erisTitle">Eris</h3>
+        <p id="erisInfo">
+            Eris is a dwarf planet located in the scattered disc, a distant region of the Solar System. Discovered in 2005, it is one of the largest known dwarf planets and has a diameter of about 2,326 kilometers (1,445 miles). Eris takes approximately 557 Earth years to complete one orbit around the Sun. It has a moon named Dysnomia and is known for its highly elliptical orbit and significant distance from the Sun.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const erisTitle = document.getElementById('erisTitle');
+            const erisInfo = document.getElementById('erisInfo');
+
+            if (language === 'english') {
+                erisTitle.textContent = 'Eris';
+                erisInfo.innerHTML = `
+                    Eris is a dwarf planet located in the scattered disc, a distant region of the Solar System. Discovered in 2005, it is one of the largest known dwarf planets and has a diameter of about 2,326 kilometers (1,445 miles). Eris takes approximately 557 Earth years to complete one orbit around the Sun. It has a moon named Dysnomia and is known for its highly elliptical orbit and significant distance from the Sun.
+                `;
+            } else if (language === 'urdu') {
+                erisTitle.textContent = 'إريس';
+                erisInfo.innerHTML = `
+                    إريس ایک بونا سیارہ ہے جو بکھرے ہوئے ڈسک میں واقع ہے، جو سورج کے نظام کا ایک دور دراز علاقہ ہے۔ 2005 میں دریافت ہونے والا یہ سب سے بڑے جانے والے بونے سیاروں میں سے ایک ہے اور اس کا قطر تقریباً 2,326 کلومیٹر (1,445 میل) ہے۔ إريس سورج کے گرد ایک مکمل گردش کرنے میں تقریباً 557 زمین کے سال لیتا ہے۔ اس کے پاس ڈیس نومیا نامی ایک چاند ہے اور یہ اپنے انتہائی بیضوی مدار اور سورج سے بڑی دوری کے لیے جانا جاتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

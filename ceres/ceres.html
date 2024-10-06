@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Ceres</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="ceresTitle">Ceres</h3>
+        <p id="ceresInfo">
+            Ceres is the largest object in the asteroid belt. Discovered on January 1, 1801, by Giuseppe Piazzi, it is classified as a dwarf planet. Ceres has a diameter of 940 km (584 miles) and takes about 4.6 years to complete one orbit around the Sun. It has a thin atmosphere with traces of water vapor, and its surface is marked by the Occator Crater, which features bright spots.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const ceresTitle = document.getElementById('ceresTitle');
+            const ceresInfo = document.getElementById('ceresInfo');
+
+            if (language === 'english') {
+                ceresTitle.textContent = 'Ceres';
+                ceresInfo.innerHTML = `
+                    Ceres is the largest object in the asteroid belt. Discovered on January 1, 1801, by Giuseppe Piazzi, it is classified as a dwarf planet. Ceres has a diameter of 940 km (584 miles) and takes about 4.6 years to complete one orbit around the Sun. It has a thin atmosphere with traces of water vapor, and its surface is marked by the Occator Crater, which features bright spots.
+                `;
+            } else if (language === 'urdu') {
+                ceresTitle.textContent = 'سيریس';
+                ceresInfo.innerHTML = `
+                    سيریس شمسی نظام کا سب سے بڑا بونا سیارہ ہے۔ 1 جنوری 1801 کو جیوسپی پائزی نے دریافت کیا۔ اسے بونا سیارہ کہا جاتا ہے۔ سيریس کا قطر 940 کلومیٹر (584 میل) ہے اور یہ سورج کے گرد مکمل گردش کرنے میں 4.6 سال لیتا ہے۔ اس کا ماحول بہت پتلا ہے جس میں پانی کی بوندیں موجود ہیں، اور اس کی سطح اوکیٹر کریٹر کے ساتھ نشان زد ہے، جس میں چمکدار مقامات موجود ہیں۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

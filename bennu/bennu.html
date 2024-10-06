@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
+    <title>Bennu</title>
+</head>
+<body>
+    <button class="back-button" onclick="goHome()">
+        &#8592;
+    </button>
+
+    <div class="info-box" id="infoBox">
+        <h3 id="bennuTitle">بینو</h3>
+        <p id="bennuInfo">
+            Bennu is a small near-Earth asteroid that was discovered in 1999. It is approximately 487 meters (1,600 feet) in diameter and is classified as a dark asteroid, appearing similar to most things found on Earth. Due to its size and proximity to Earth, Bennu is particularly important for potential impacts on our planet. Bennu orbits the Sun and comes close to Earth approximately every 1.2 years.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function goHome() {
+            window.location.href = '../index.html';
+        }
+
+        function switchLanguage(language) {
+            const bennuTitle = document.getElementById('bennuTitle');
+            const bennuInfo = document.getElementById('bennuInfo');
+
+            if (language === 'english') {
+                bennuTitle.textContent = 'Bennu';
+                bennuInfo.innerHTML = `
+                    Bennu is a small near-Earth asteroid that was discovered in 1999. It is approximately 487 meters (1,600 feet) in diameter and is classified as a dark asteroid, appearing similar to most things found on Earth. Due to its size and proximity to Earth, Bennu is particularly important for potential impacts on our planet. Bennu orbits the Sun and comes close to Earth approximately every 1.2 years.
+                `;
+            } else if (language === 'urdu') {
+                bennuTitle.textContent = 'بینو';
+                bennuInfo.innerHTML = `
+                    بینو ایک چھوٹا سیارچہ ہے جو زمین کے قریب سے گزرتا ہے۔ یہ تقریباً 487 میٹر (1,600 فٹ) قطر میں ہے اور اسے 1999 میں دریافت کیا گیا تھا۔ بینو ایک سیاہ رنگ کا سیارچہ ہے، جو زمین کی سطح پر موجود زیادہ تر چیزوں کی طرح دیکھی جاتی ہے۔ یہ اپنے سائز اور زمین کے ساتھ اپنی نزدیکی کے باعث زمین پر ممکنہ اثرات کے لیے خاص طور پر اہم ہے۔ بینو کا مدار سورج کے گرد چکر لگاتا ہے اور یہ ہر 1.2 سال میں ایک بار زمین کے قریب آتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
+    </script>
+</body>
+</html>

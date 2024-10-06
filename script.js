@@ -78,7 +78,13 @@ const sunMaterial = new THREE.MeshBasicMaterial({ map: sunTexture });
 const sun = new THREE.Mesh(sunGeometry, sunMaterial);
 scene.add(sun);
 
-const mercury = createTexturedPlanet(0.5, mercuryTexture, 5);
+const sunPositionXOffset = -1;
+sun.position.set(sunPositionXOffset, 0, 0);
+
+const mercuryOrbitOffset = 0.5;
+const venusOrbitPositionXOffset = -1;
+
+const mercury = createTexturedPlanet(0.5, mercuryTexture, 5 + mercuryOrbitOffset);
 const venus = createTexturedPlanet(0.7, venusTexture, 8);
 const earth = createTexturedPlanet(0.9, earthTexture, 12);
 const moon = createTexturedPlanet(0.3, moonTexture, 1.5);
@@ -107,7 +113,7 @@ function createOrbit(radius, planetName) {
 }
 
 const orbits = [];
-orbits.push(createOrbit(5, 'Mercury'));
+orbits.push(createOrbit(5 + mercuryOrbitOffset, 'Mercury'));
 orbits.push(createOrbit(8, 'Venus'));
 orbits.push(createOrbit(12, 'Earth'));
 orbits.push(createOrbit(15, 'Mars'));
@@ -132,6 +138,57 @@ function createSaturnRing(innerRadius, outerRadius, texture) {
 const saturnRing = createSaturnRing(1.5, 2, saturnRingTexture);
 saturnRing.position.set(25, 0, 0);
 saturn.orbit.add(saturnRing);
+
+const loader = new THREE.GLTFLoader();
+
+loader.load('models/eros.glb', (gltf) => {
+    const erosModel = gltf.scene;
+
+    const box = new THREE.Box3().setFromObject(erosModel);
+    const size = box.getSize(new THREE.Vector3());
+
+    const desiredSize = 1;
+    const scaleFactor = desiredSize / Math.max(size.x, size.y, size.z);
+    erosModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+    erosModel.position.set(13.5, 0, 0);
+
+    scene.add(erosModel);
+}, undefined, (error) => {
+    console.error('An error happened while loading the Eros model:', error);
+});
+
+loader.load('models/bennu.glb', (gltf) => {
+    const bennuModel = gltf.scene;
+
+    const box = new THREE.Box3().setFromObject(bennuModel);
+    const size = box.getSize(new THREE.Vector3());
+
+    const desiredSize = 1;
+    const scaleFactor = desiredSize / Math.max(size.x, size.y, size.z);
+    bennuModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+    bennuModel.position.set(-10, 0, 0);
+    scene.add(bennuModel);
+}, undefined, (error) => {
+    console.error('An error happened while loading the Bennu model:', error);
+});
+
+loader.load('models/itokawa.glb', (gltf) => {
+    const itokawaModel = gltf.scene;
+
+    const box = new THREE.Box3().setFromObject(itokawaModel);
+    const size = box.getSize(new THREE.Vector3());
+
+    const desiredSize = 1;
+    const scaleFactor = desiredSize / Math.max(size.x, size.y, size.z);
+    itokawaModel.scale.set(scaleFactor, scaleFactor, scaleFactor);
+
+    itokawaModel.position.set(18, 0, 0);
+    scene.add(itokawaModel);
+}, undefined, (error) => {
+    console.error('An error happened while loading the Itokawa model:', error);
+});
 
 const pointLight = new THREE.PointLight(0xffffff, 2, 100);
 pointLight.position.set(0, 0, 0);
@@ -206,19 +263,19 @@ function animate() {
     requestAnimationFrame(animate);
 
     if (!isPaused) {
-        mercury.orbit.rotation.y += 0.02;
-        venus.orbit.rotation.y += 0.018;
-        earth.orbit.rotation.y += 0.015;
-        mars.orbit.rotation.y += 0.012;
-        ceres.orbit.rotation.y += 0.011;
-        jupiter.orbit.rotation.y += 0.01;
-        saturn.orbit.rotation.y += 0.009;
-        uranus.orbit.rotation.y += 0.008;
-        neptune.orbit.rotation.y += 0.007;
-        pluto.orbit.rotation.y += 0.005;
-        haumea.orbit.rotation.y += 0.004;
-        makemake.orbit.rotation.y += 0.003;
-        eris.orbit.rotation.y += 0.002;
+        mercury.orbit.rotation.y += 0.01;
+        venus.orbit.rotation.y += 0.009;
+        earth.orbit.rotation.y += 0.008;
+        mars.orbit.rotation.y += 0.007;
+        ceres.orbit.rotation.y += 0.00425;
+        jupiter.orbit.rotation.y += 0.00275;
+        saturn.orbit.rotation.y += 0.002375;
+        uranus.orbit.rotation.y += 0.0017;
+        neptune.orbit.rotation.y += 0.00135;
+        pluto.orbit.rotation.y += 0.0012;
+        haumea.orbit.rotation.y += 0.00115;
+        makemake.orbit.rotation.y += 0.0011;
+        eris.orbit.rotation.y += 0.0009;
 
         mercury.planet.rotation.y += 0.03;
         venus.planet.rotation.y += 0.03;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
+    <title>Eros</title>
+</head>
+<body>
+    <button class="back-button" onclick="goHome()">
+        &#8592;
+    </button>
+
+    <div class="info-box" id="infoBox">
+        <h3 id="erosTitle">Eros</h3>
+        <p id="erosInfo">
+            Eros is an asteroid and one of the largest near-Earth asteroids. Discovered in 1898, it has an irregular shape and is approximately 16.84 kilometers (10.45 miles) long. Eros is classified as a S-type asteroid, primarily composed of silicate materials and metallic nickel-iron. It has been visited by spacecraft, including NASA's NEAR Shoemaker mission, which orbited and landed on Eros in 2001. This asteroid poses a potential impact risk to Earth but also provides valuable insights into the formation and evolution of our solar system.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function goHome() {
+            window.location.href = '../index.html';
+        }
+
+        function switchLanguage(language) {
+            const erosTitle = document.getElementById('erosTitle');
+            const erosInfo = document.getElementById('erosInfo');
+
+            if (language === 'english') {
+                erosTitle.textContent = 'Eros';
+                erosInfo.innerHTML = `
+                    Eros is an asteroid and one of the largest near-Earth asteroids. Discovered in 1898, it has an irregular shape and is approximately 16.84 kilometers (10.45 miles) long. Eros is classified as a S-type asteroid, primarily composed of silicate materials and metallic nickel-iron. It has been visited by spacecraft, including NASA's NEAR Shoemaker mission, which orbited and landed on Eros in 2001. This asteroid poses a potential impact risk to Earth but also provides valuable insights into the formation and evolution of our solar system.
+                `;
+            } else if (language === 'urdu') {
+                erosTitle.textContent = 'ایروس';
+                erosInfo.innerHTML = `
+                    ایروس ایک سیارچہ ہے اور یہ زمین کے قریب کے سب سے بڑے سیارچوں میں سے ایک ہے۔ اسے 1898 میں دریافت کیا گیا تھا، اور اس کی شکل بے قاعدہ ہے، جو تقریباً 16.84 کلومیٹر (10.45 میل) لمبا ہے۔ ایروس کو S قسم کے سیارچے کے طور پر درجہ بند کیا گیا ہے، جو بنیادی طور پر سلیکون مواد اور دھاتی نکل-لوہا پر مشتمل ہے۔ اسے خلا کی کشتیوں نے بھی دیکھا ہے، جن میں NASA کے NEAR Shoemaker مشن شامل ہے، جو 2001 میں ایروس کے گرد چکر لگا اور اس پر اتر گیا۔ یہ سیارچہ زمین کے لیے ممکنہ اثرات کا خطرہ بناتا ہے لیکن یہ ہمارے شمسی نظام کی تشکیل اور ارتقاء کے بارے میں قیمتی معلومات بھی فراہم کرتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
+    </script>
+</body>
+</html>

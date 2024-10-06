@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Sun</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="sunTitle">Sun</h3>
+        <p id="sunInfo">
+            The Sun is the star at the center of the Solar System and is the most important source of energy for life on Earth. It is a nearly perfect sphere of hot plasma, with temperatures reaching about 15 million degrees Celsius (27 million degrees Fahrenheit) at its core. The Sun is primarily composed of hydrogen (about 74%) and helium (about 24%). It has a diameter of approximately 1.39 million kilometers (864,000 miles) and is located about 93 million miles (150 million kilometers) away from Earth. The Sun plays a crucial role in the gravitational dynamics of the Solar System.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const sunTitle = document.getElementById('sunTitle');
+            const sunInfo = document.getElementById('sunInfo');
+
+            if (language === 'english') {
+                sunTitle.textContent = 'Sun';
+                sunInfo.innerHTML = `
+                    The Sun is the star at the center of the Solar System and is the most important source of energy for life on Earth. It is a nearly perfect sphere of hot plasma, with temperatures reaching about 15 million degrees Celsius (27 million degrees Fahrenheit) at its core. The Sun is primarily composed of hydrogen (about 74%) and helium (about 24%). It has a diameter of approximately 1.39 million kilometers (864,000 miles) and is located about 93 million miles (150 million kilometers) away from Earth. The Sun plays a crucial role in the gravitational dynamics of the Solar System.
+                `;
+            } else if (language === 'urdu') {
+                sunTitle.textContent = 'سورج';
+                sunInfo.innerHTML = `
+                    سورج سورج کے نظام کے مرکز میں موجود ستارہ ہے اور یہ زمین پر زندگی کے لیے توانائی کا سب سے اہم ذریعہ ہے۔ یہ گرم پلازما کا ایک تقریباً کامل گولہ ہے، جس کے مرکز میں درجہ حرارت تقریباً 15 ملین ڈگری سیلسیس (27 ملین ڈگری فارنہائٹ) تک پہنچتا ہے۔ سورج بنیادی طور پر ہائیڈروجن (تقریباً 74%) اور ہیلیم (تقریباً 24%) پر مشتمل ہے۔ اس کا قطر تقریباً 1.39 ملین کلومیٹر (864,000 میل) ہے اور یہ زمین سے تقریباً 93 ملین میل (150 ملین کلومیٹر) دور واقع ہے۔ سورج سورج کے نظام کی گریویٹیشنل حرکیات میں ایک اہم کردار ادا کرتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Neptune</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="neptuneTitle">Neptune</h3>
+        <p id="neptuneInfo">
+            Neptune is the eighth and farthest planet from the Sun in the solar system. It has a diameter of about 49,244 kilometers (30,598 miles) and is known for its striking blue color, which is due to the presence of methane in its atmosphere. Neptune has the strongest winds of any planet, reaching speeds of up to 2,100 kilometers per hour (1,300 miles per hour). It takes about 165 Earth years to complete one orbit around the Sun.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const neptuneTitle = document.getElementById('neptuneTitle');
+            const neptuneInfo = document.getElementById('neptuneInfo');
+
+            if (language === 'english') {
+                neptuneTitle.textContent = 'Neptune';
+                neptuneInfo.innerHTML = `
+                    Neptune is the eighth and farthest planet from the Sun in the solar system. It has a diameter of about 49,244 kilometers (30,598 miles) and is known for its striking blue color, which is due to the presence of methane in its atmosphere. Neptune has the strongest winds of any planet, reaching speeds of up to 2,100 kilometers per hour (1,300 miles per hour). It takes about 165 Earth years to complete one orbit around the Sun.
+                `;
+            } else if (language === 'urdu') {
+                neptuneTitle.textContent = 'نیپچون';
+                neptuneInfo.innerHTML = `
+                    نیپچون سورج سے آٹھواں اور سب سے دور سیارہ ہے۔ اس کا قطر تقریباً 49,244 کلومیٹر (30,598 میل) ہے اور یہ اپنے شاندار نیلے رنگ کے لیے جانا جاتا ہے، جو اس کی فضاء میں میتھین کی موجودگی کی وجہ سے ہے۔ نیپچون میں کسی بھی سیارے کی سب سے طاقتور ہوائیں ہیں، جو 2,100 کلومیٹر فی گھنٹہ (1,300 میل فی گھنٹہ) کی رفتار تک پہنچتی ہیں۔ یہ سورج کے گرد ایک مکمل گردش کرنے میں تقریباً 165 زمین کے سال لیتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

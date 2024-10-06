@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Venus</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="venusTitle">Venus</h3>
+        <p id="venusInfo">
+            Venus is the second planet from the Sun and is often called Earth's "sister planet" due to their similar size and composition. It has a diameter of about 12,104 kilometers (7,521 miles) and is the hottest planet in the Solar System, with surface temperatures reaching up to 465 degrees Celsius (869 degrees Fahrenheit). Venus has a thick atmosphere composed mainly of carbon dioxide, with clouds of sulfuric acid, making it a hostile environment. It takes about 225 Earth days to complete one orbit around the Sun.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const venusTitle = document.getElementById('venusTitle');
+            const venusInfo = document.getElementById('venusInfo');
+
+            if (language === 'english') {
+                venusTitle.textContent = 'Venus';
+                venusInfo.innerHTML = `
+                    Venus is the second planet from the Sun and is often called Earth's "sister planet" due to their similar size and composition. It has a diameter of about 12,104 kilometers (7,521 miles) and is the hottest planet in the Solar System, with surface temperatures reaching up to 465 degrees Celsius (869 degrees Fahrenheit). Venus has a thick atmosphere composed mainly of carbon dioxide, with clouds of sulfuric acid, making it a hostile environment. It takes about 225 Earth days to complete one orbit around the Sun.
+                `;
+            } else if (language === 'urdu') {
+                venusTitle.textContent = 'زہرہ';
+                venusInfo.innerHTML = `
+                    زہرہ سورج سے دوسرا سیارہ ہے اور اسے اکثر زمین کی بہن کہا جاتا ہے کیونکہ ان کے حجم اور ترکیب میں مشابہت ہے۔ اس کا قطر تقریباً 12,104 کلومیٹر (7,521 میل) ہے اور یہ سورج کے نظام کا سب سے گرم سیارہ ہے، جس کی سطح کا درجہ حرارت 465 ڈگری سیلسیس (869 ڈگری فارنہائٹ) تک پہنچ جاتا ہے۔ زہرہ کا موٹا ماحول بنیادی طور پر کاربن ڈائی آکسائیڈ پر مشتمل ہے، جس میں سلفورک ایسڈ کے بادل ہیں، جو اسے ایک مہلک ماحول بناتا ہے۔ یہ سورج کے گرد ایک مکمل گردش کرنے میں تقریباً 225 زمین کے دن لیتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

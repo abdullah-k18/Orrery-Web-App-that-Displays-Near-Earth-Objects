@@ -6,18 +6,53 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
-    <title>Moon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
+    <title>The Moon</title>
 </head>
 <body>
     <button class="back-button" onclick="goHome()">
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="moonTitle">The Moon</h3>
+        <p id="moonInfo">
+            The Moon is Earth's only natural satellite and the fifth largest moon in the solar system. It has a diameter of about 3,474 kilometers (2,159 miles) and is approximately 1/6th the size of Earth. The Moon influences Earth's tides and has a significant impact on its climate. Its surface is marked by craters, mountains, and flat plains called "maria." The Moon orbits Earth approximately every 27.3 days.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const moonTitle = document.getElementById('moonTitle');
+            const moonInfo = document.getElementById('moonInfo');
+
+            if (language === 'english') {
+                moonTitle.textContent = 'The Moon';
+                moonInfo.innerHTML = `
+                    The Moon is Earth's only natural satellite and the fifth largest moon in the solar system. It has a diameter of about 3,474 kilometers (2,159 miles) and is approximately 1/6th the size of Earth. The Moon influences Earth's tides and has a significant impact on its climate. Its surface is marked by craters, mountains, and flat plains called "maria." The Moon orbits Earth approximately every 27.3 days.
+                `;
+            } else if (language === 'urdu') {
+                moonTitle.textContent = 'چاند';
+                moonInfo.innerHTML = `
+                    چاند زمین کا واحد قدرتی سیارہ ہے اور یہ شمسی نظام کا پانچواں بڑا چاند ہے۔ اس کا قطر تقریباً 3,474 کلومیٹر (2,159 میل) ہے اور یہ زمین کے سائز کا تقریباً 1/6 ہے۔ چاند زمین کی لہروں پر اثر انداز ہوتا ہے اور اس کے موسم پر بھی اہم اثر ڈالتا ہے۔ اس کی سطح گڑھوں، پہاڑوں اور "ماریا" نامی ہموار میدانوں سے نشان زد ہے۔ چاند زمین کے گرد تقریباً ہر 27.3 دن بعد چکر لگاتا ہے۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>

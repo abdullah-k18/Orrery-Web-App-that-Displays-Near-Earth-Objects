@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/187801/solar-system-space.svg" type="image/x-icon" />
     <title>Galaxy</title>
 </head>
 <body>
@@ -13,11 +15,44 @@
         &#8592;
     </button>
 
+    <div class="info-box" id="infoBox">
+        <h3 id="galaxyTitle">Galaxy</h3>
+        <p id="galaxyInfo">
+            A galaxy is a massive system consisting of stars, stellar remnants, interstellar gas, dust, and dark matter, bound together by gravity. The Milky Way, our home galaxy, is a barred spiral galaxy that contains billions of stars. Galaxies can vary significantly in size, shape, and composition, and they are categorized into several types, including spiral, elliptical, and irregular galaxies.
+        </p>
+    </div>
+
+    <div class="nav-bar">
+        <button class="nav-button" onclick="switchLanguage('english')">English</button>
+        <button class="nav-button" onclick="switchLanguage('urdu')">Urdu</button>
+    </div>
+
     <script src="script.js"></script>
     <script>
         function goHome() {
             window.location.href = '../index.html';
         }
+
+        function switchLanguage(language) {
+            const galaxyTitle = document.getElementById('galaxyTitle');
+            const galaxyInfo = document.getElementById('galaxyInfo');
+
+            if (language === 'english') {
+                galaxyTitle.textContent = 'Galaxy';
+                galaxyInfo.innerHTML = `
+                    A galaxy is a massive system consisting of stars, stellar remnants, interstellar gas, dust, and dark matter, bound together by gravity. The Milky Way, our home galaxy, is a barred spiral galaxy that contains billions of stars. Galaxies can vary significantly in size, shape, and composition, and they are categorized into several types, including spiral, elliptical, and irregular galaxies.
+                `;
+            } else if (language === 'urdu') {
+                galaxyTitle.textContent = 'کہکشان';
+                galaxyInfo.innerHTML = `
+                    کہکشان ایک وسیع نظام ہے جس میں ستارے، ستاروں کے باقیات، بین النجمی گیس، مٹی اور تاریک مادہ شامل ہوتے ہیں، جو کشش ثقل کی مدد سے آپس میں بندھے ہوتے ہیں۔ ملکی وے، جو ہماری کہکشان ہے، ایک بارڈ سپائریل کہکشان ہے جس میں اربوں ستارے موجود ہیں۔ کہکشان مختلف سائز، شکل، اور ترکیب میں نمایاں فرق کر سکتی ہیں، اور انہیں کئی اقسام میں تقسیم کیا جاتا ہے، جن میں اسپائریل، بیضوی، اور بے قاعدہ کہکشائیں شامل ہیں۔
+                `;
+            }
+        }
+
+        window.onload = function() {
+            switchLanguage('english');
+        };
     </script>
 </body>
 </html>
